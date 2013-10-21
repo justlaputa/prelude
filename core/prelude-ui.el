@@ -88,5 +88,7 @@
 (require 'which-key)
 (which-key-mode +1)
 
+(load-theme 'spolsky t)
+
 (provide 'prelude-ui)
 ;;; prelude-ui.el ends here
