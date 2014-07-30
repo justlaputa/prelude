@@ -8,4 +8,6 @@
 
 (setq speedbar-show-unknown-files t)
 
+(setq js-indent-level 2)
+
 (provide 'custom)
