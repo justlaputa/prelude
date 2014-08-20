@@ -10,4 +10,8 @@
 
 (setq js-indent-level 2)
 
+(setq org-agenda-files (list "~/.org/work.org"
+                             "~/.org/hack.org"
+                             "~/.org/life.org"))
+
 (provide 'custom)
