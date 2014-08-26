@@ -14,4 +14,9 @@
                              "~/.org/hack.org"
                              "~/.org/life.org"))
 
+(setq projectile-completion-system 'grizzl)
+(setq projectile-enable-caching t)
+
+(load-theme 'spolsky t)
+
 (provide 'custom)
