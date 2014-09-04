@@ -19,4 +19,7 @@
 
 (load-theme 'spolsky t)
 
+(set-face-attribute hl-line-face nil :underline nil)
+(set-face-background hl-line-face "gray13")
+
 (provide 'custom)
