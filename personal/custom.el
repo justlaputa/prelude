@@ -22,6 +22,8 @@
 
 (setq js-indent-level 2)
 
+(setenv "GOPATH" "/home/laputa/workspace/go")
+
 (defun xah-open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference.
@@ -51,4 +53,41 @@ Version 2015-01-26"
         (mapc
          (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath))) ξfile-list))))))
 
+;; from http://emacswiki.org/emacs/InsertingTodaysDate
+(defun insert-todays-date (arg)
+  (interactive "P")
+  (insert (if arg
+              (format-time-string "%d-%m-%Y")
+            (format-time-string "%Y-%m-%d"))))
+
+;; swiper
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-height 10)
+(setq ivy-count-format "(%d/%d) ")
+(setq ivy-display-style 'fancy)
+
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-load-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+
 (provide 'custom)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(tab-width 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
