@@ -14,8 +14,7 @@
 (setq speedbar-show-unknown-files t)
 
 (setq org-agenda-files (list "~/.org/work.org"
-                             "~/.org/hack.org"
-                             "~/.org/life.org"))
+                             "~/.org/hack.org"))
 
 (setq projectile-completion-system 'grizzl)
 (setq projectile-enable-caching t)
