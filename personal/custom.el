@@ -85,14 +85,15 @@ Version 2015-01-26"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (spolsky)))
  '(custom-safe-themes
    (quote
     ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
  '(linum-format " %7i ")
  '(package-selected-packages
    (quote
-    (helm-projectile helm counsel swiper ivy dockerfile-mode go-mode yaml-mode zop-to-char zenburn-theme which-key volatile-highlights undo-tree projectile  sublime-themes smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl crux counsel company browse-kill-ring beacon anzu ace-window)))
- '(tab-width 4))
+    (counsel ivy swiper dockerfile-mode go-mode yaml-mode zop-to-char zenburn-theme which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl crux company browse-kill-ring beacon anzu ace-window)))
+)
 
 ;;; custom.el ends here
 (custom-set-faces
@@ -100,4 +101,4 @@ Version 2015-01-26"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+)
