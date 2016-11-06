@@ -20,8 +20,6 @@
 
 (setq js-indent-level 2)
 
-(setenv "GOPATH" "/home/laputa/workspace/go")
-
 (defun xah-open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference.
@@ -58,6 +56,24 @@ Version 2015-01-26"
               (format-time-string "%d-%m-%Y")
             (format-time-string "%Y-%m-%d"))))
 
+;; from https://tleyden.github.io/blog/2014/05/22/configure-emacs-as-a-go-editor-from-scratch/
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+
+(setenv "GOPATH" "/home/laputa/workspace/go")
+
+(defun auto-complete-for-go ()
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+
 ;; swiper
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -85,15 +101,44 @@ Version 2015-01-26"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(custom-enabled-themes (quote (spolsky)))
  '(custom-safe-themes
    (quote
     ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
+ '(fci-rule-color "#383838")
  '(linum-format " %7i ")
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (counsel ivy swiper dockerfile-mode go-mode yaml-mode zop-to-char zenburn-theme which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl crux company browse-kill-ring beacon anzu ace-window)))
-)
+    (go-autocomplete exec-path-from-shell counsel ivy swiper dockerfile-mode go-mode yaml-mode zop-to-char zenburn-theme which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl crux company browse-kill-ring beacon anzu ace-window)))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(tab-width 4)
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
 
 ;;; custom.el ends here
 (custom-set-faces
@@ -101,4 +146,4 @@ Version 2015-01-26"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
