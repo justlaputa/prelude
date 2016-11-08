@@ -53,6 +53,9 @@ Version 2015-01-26"
         (mapc
          (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath))) ξfile-list))))))
 
+;; =============== Golang settings ========================
+(setenv "GOPATH" "/home/laputa/workspace/go")
+
 ;; from http://emacswiki.org/emacs/InsertingTodaysDate
 (defun insert-todays-date (arg)
   (interactive "P")
@@ -72,11 +75,25 @@ Version 2015-01-26"
 
 (when window-system (set-exec-path-from-shell-PATH))
 
-(setenv "GOPATH" "/home/laputa/workspace/go")
+(defun my-go-mode-hook ()
+                                        ; Use goimports instead of go-fmt
+  (setq gofmt-command "goimports")
+                                        ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+                                        ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
+                                        ; Godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump))
+
+(add-hook 'my-go-mode-hook 'go-guru-hl-identifier-mode)
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
 (add-hook 'go-mode-hook 'auto-complete-for-go)
+;; ================ Golang settings end ===================
 
 ;; swiper
 (ivy-mode 1)
@@ -110,7 +127,7 @@ Version 2015-01-26"
     ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
  '(package-selected-packages
    (quote
-    (counsel go-autocomplete ivy swiper zop-to-char zenburn-theme yaml-mode which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line slime rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major dired-ranger diminish diff-hl crux company-go company-anaconda browse-kill-ring beacon anzu ace-window))))
+    (exec-path-from-shell counsel go-autocomplete ivy swiper zop-to-char zenburn-theme yaml-mode which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line slime rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major dired-ranger diminish diff-hl crux company-go company-anaconda browse-kill-ring beacon anzu ace-window))))
 
 ;;; custom.el ends here
 (custom-set-faces
