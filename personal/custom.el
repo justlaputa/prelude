@@ -1,3 +1,8 @@
+;; Save whatever’s in the current (system) clipboard before
+;; replacing it with the Emacs’ text.
+;; https://github.com/dakrone/eos/blob/master/eos.org
+(setq save-interprogram-paste-before-kill t)
+
 (scroll-bar-mode -1)
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
