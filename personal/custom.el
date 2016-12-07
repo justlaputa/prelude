@@ -127,7 +127,7 @@ Version 2015-01-26"
     ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell counsel go-autocomplete ivy swiper zop-to-char zenburn-theme yaml-mode which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line slime rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major dired-ranger diminish diff-hl crux company-go company-anaconda browse-kill-ring beacon anzu ace-window))))
+    (dockerfile-mode exec-path-from-shell counsel go-autocomplete ivy swiper zop-to-char zenburn-theme yaml-mode which-key volatile-highlights undo-tree sublime-themes smex smartrep smartparens smart-mode-line slime rainbow-mode rainbow-delimiters ov operate-on-number move-text markdown-mode magit lua-mode json-mode js2-mode imenu-anywhere ido-ubiquitous helm-projectile guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flycheck flx-ido expand-region elisp-slime-nav easy-kill discover-my-major dired-ranger diminish diff-hl crux company-go company-anaconda browse-kill-ring beacon anzu ace-window))))
 
 ;;; custom.el ends here
 (custom-set-faces
