@@ -75,6 +75,8 @@ Version 2015-01-26"
 
 (when window-system (set-exec-path-from-shell-PATH))
 
+(add-to-list 'exec-path "/home/laputa/workspace/go/bin")
+
 (defun my-go-mode-hook ()
                                         ; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")
@@ -85,7 +87,10 @@ Version 2015-01-26"
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
                                         ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump))
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  (setq tab-width 2)
+  (setq indent-tabs-mode 1))
 
 (add-hook 'my-go-mode-hook 'go-guru-hl-identifier-mode)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
@@ -93,6 +98,9 @@ Version 2015-01-26"
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
 (add-hook 'go-mode-hook 'auto-complete-for-go)
+
+(with-eval-after-load 'go-mode
+  (require 'go-autocomplete))
 ;; ================ Golang settings end ===================
 
 ;; swiper
